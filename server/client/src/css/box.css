@@ -1,3 +1,9 @@
+@media screen and (max-width: 600px) {
+  .alertBox {
+    left: 10% !important;
+  }
+}
+
 .bigBox {
   display: flex;
   flex-direction: column;
@@ -14,5 +20,54 @@
 
 .bigBox:hover {
   background-color: #69f443b0;
+  cursor: pointer;
+}
+
+.smallBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 50px;
+  box-shadow: 0 0 6px 0px #aba9ae;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  color: white;
+  font-weight: bold;
+  background-color: #dc3030fc;
+  margin: 0 15px;
+}
+
+.smallBox:hover {
+  background-color: #dd4848fc;
+  cursor: pointer;
+}
+
+.closeBtn {
+  position: absolute;
+  transform: translate(40px, -26px);
+  color: #ffffff82;
+}
+
+.alertBox {
+  position: absolute;
+  top: 2%;
+  left: 35%;
+  padding: 42px 57px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 0 6px 1px #aba9ae;
+}
+
+.alertCloseBtn {
+  position: absolute;
+  transform: translate(233px, -41px);
+  font-weight: bold;
+  color: #ffffff82;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.alertCloseBtn:hover {
   cursor: pointer;
 }
