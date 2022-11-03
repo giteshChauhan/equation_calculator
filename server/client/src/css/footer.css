@@ -1,0 +1,12 @@
+.footer {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  justify-content: space-evenly;
+}
+
+.myLinks {
+  color: black;
+  margin: 0 5px;
+  text-decoration: none;
+}
