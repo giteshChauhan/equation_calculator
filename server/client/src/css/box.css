@@ -1,0 +1,18 @@
+.bigBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  box-shadow: 0 0 6px 0px #aba9ae;
+  border-radius: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: #68f443;
+  margin: 0 15px;
+}
+
+.bigBox:hover {
+  background-color: #69f443b0;
+  cursor: pointer;
+}
