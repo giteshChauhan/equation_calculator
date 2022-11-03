@@ -1,19 +1,40 @@
 import "../../css/box.css";
 
-const BigBox = ({ content }) => {
-  const handleBoxDrag = (e, data) => {
-    e.dataTransfer.setData("id", data);
+const BigBox = ({ content, isDrag, onClose, isRHS }) => {
+  const dataToAdd = {
+    doc: content,
+    isBigBox: true,
+    isEventBox: false,
+  };
+  const handleBoxDrag = (e) => {
+    e.dataTransfer.setData("id", JSON.stringify(dataToAdd));
   };
 
   return (
     <div
       className="bigBox"
-      draggable={true}
-      onDragStart={(e) => handleBoxDrag(e, content)}
+      style={isRHS ? { backgroundColor: "#6e00ff" } : null}
+      draggable={isDrag}
+      onDragStart={(e) => handleBoxDrag(e)}
     >
-      {content}
+      {onClose && (
+        <div
+          className="closeBtn"
+          style={{ transform: "translate(40px, -50px)" }}
+          onClick={() => onClose(content)}
+        >
+          X
+        </div>
+      )}
+      {content.alphabet}
     </div>
   );
+};
+
+BigBox.defaultProps = {
+  isDrag: true,
+  onClose: null,
+  isRHS: false,
 };
 
 export default BigBox;
