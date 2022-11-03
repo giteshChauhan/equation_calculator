@@ -1,5 +1,5 @@
-## equation_calculator:
+# equation_calculator:
 
-# About:
+## About:
 
 Assignment containing drap n drop mechanism for evaluating equations.
