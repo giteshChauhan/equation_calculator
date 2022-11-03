@@ -1,8 +1,11 @@
-import { useState } from "react";
+import AlertBox from "../common/alertBox";
 import Evaluator from "./evaluator";
+import { useState } from "react";
 import Bar from "./bar";
 
 const Home = () => {
+  const [alertText, setAlertText] = useState();
+  const [isAlert, setIsAlert] = useState(false);
   const [evaluationData, setData] = useState([]);
   const data1 = [
     { _id: 8, alphabet: "A", number: 12 },
@@ -34,6 +37,29 @@ const Home = () => {
     setData(newData);
   };
 
+  const handleEvaluation = () => {
+    try {
+      const op = evaluationData[1].doc.operation;
+      const cmp = evaluationData[3].doc.operation;
+      const evaluator = new Function(
+        "a",
+        "b",
+        "rhs",
+        `return a ${op} b ${cmp} rhs`
+      );
+      const result = evaluator(
+        evaluationData[0].doc.number,
+        evaluationData[2].doc.number,
+        evaluationData[4].doc.number
+      );
+      setAlertText(`${result}`);
+      setIsAlert(true);
+    } catch (ex) {
+      setAlertText("Error");
+      setIsAlert(true);
+    }
+  };
+
   return (
     <div className="container">
       <div className="col">
@@ -49,6 +75,14 @@ const Home = () => {
           data={evaluationData}
           onRemove={handleRemove}
         />
+        <button
+          className="btn btn-primary"
+          style={{ width: "100%" }}
+          onClick={() => handleEvaluation()}
+        >
+          Evaluate
+        </button>
+        {isAlert && <AlertBox isClose={setIsAlert} text={alertText} />}
       </div>
     </div>
   );
