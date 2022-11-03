@@ -1,0 +1,12 @@
+.bar {
+  height: 12rem;
+  overflow-x: scroll;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: 0 0 7px 1px #aba9ae;
+  border-radius: 20px;
+  margin: 2% 0;
+  padding: 15px;
+}
