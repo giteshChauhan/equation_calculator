@@ -1,6 +1,7 @@
 import AlertBox from "../common/alertBox";
 import Evaluator from "./evaluator";
 import { useState } from "react";
+import Footer from "./footer";
 import Bar from "./bar";
 
 const Home = () => {
@@ -36,6 +37,10 @@ const Home = () => {
     );
     setData(newData);
   };
+
+  /** function to evaluate the equation: Here I have use constructor function
+   * while returning the result using template litral.
+   * Also I have used simple try catch in order to match the format of the equation.*/
 
   const handleEvaluation = () => {
     try {
@@ -83,6 +88,7 @@ const Home = () => {
           Evaluate
         </button>
         {isAlert && <AlertBox isClose={setIsAlert} text={alertText} />}
+        <Footer />
       </div>
     </div>
   );
