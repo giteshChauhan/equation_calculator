@@ -19,6 +19,15 @@ const Bar = ({ data, isBigBox, onAdd, isEventBox }) => {
           />
         );
       })}
+      {data.length ? null : (
+        <div
+          className="spinner-border text-primary"
+          style={{ marginLeft: "2%" }}
+          role="status"
+        >
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
       {isEventBox && <EventBox onAdd={onAdd} />}
     </div>
   );
