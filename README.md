@@ -1,4 +1,4 @@
-# equation_calculator:
+# equation_calculator: https://drag-equation-calculator.herokuapp.com/
 
 ## About:
 
