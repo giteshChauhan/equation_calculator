@@ -1,6 +1,7 @@
+import { getAlphabets } from "./../../services/alphabetService";
+import { useState, useCallback, useEffect } from "react";
 import AlertBox from "../common/alertBox";
 import Evaluator from "./evaluator";
-import { useState } from "react";
 import Footer from "./footer";
 import Bar from "./bar";
 
@@ -8,14 +9,7 @@ const Home = () => {
   const [alertText, setAlertText] = useState();
   const [isAlert, setIsAlert] = useState(false);
   const [evaluationData, setData] = useState([]);
-  const data1 = [
-    { _id: 8, alphabet: "A", number: 12 },
-    { _id: 9, alphabet: "B", number: 24 },
-    { _id: 10, alphabet: "C", number: 3 },
-    { _id: 11, alphabet: "D", number: 46 },
-    { _id: 12, alphabet: "E", number: 78 },
-    { _id: 13, alphabet: "F", number: 7 },
-  ];
+  const [alphabetData, setAlphabetData] = useState([]);
   const operations = [
     { _id: 1, operation: "+", isClick: false, isDrag: true, isCompare: false },
     { _id: 2, operation: "-", isClick: false, isDrag: true, isCompare: false },
@@ -24,6 +18,19 @@ const Home = () => {
     { _id: 5, operation: "<", isClick: true, isDrag: false, isCompare: true },
     { _id: 6, operation: ">", isClick: true, isDrag: false, isCompare: true },
   ];
+
+  const fetchAlphabets = useCallback(async () => {
+    try {
+      const { data } = await getAlphabets();
+      setAlphabetData(data);
+    } catch (ex) {
+      // interceptor of axios git will auto detect it
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchAlphabets();
+  }, [fetchAlphabets]);
 
   const handleAdd = (content) => {
     const copyData = [...evaluationData];
@@ -68,7 +75,7 @@ const Home = () => {
   return (
     <div className="container">
       <div className="col">
-        <Bar data={data1} />
+        <Bar data={alphabetData} />
         <Bar
           data={operations}
           isBigBox={false}
